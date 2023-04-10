@@ -1,12 +1,13 @@
 const express = require("express");
 const mysql = require("mysql");
 const app = express();
+require('dotenv').config()
 app.use(express.json())
 const connection = mysql.createConnection({
-    host: "bwmpbeeawsmn3wustguu-mysql.services.clever-cloud.com",
-    user: "uma8vjdlxdxqrbkn",
-    password: "IWsPfQzY4aVlFXROtYZd",
-    database: "bwmpbeeawsmn3wustguu"
+    host: process.env.D_HOST,
+    user: process.env.D_USER,
+    password: process.env.D_PASSWORD,
+    database: process.env.DATA_BASE
 
 
 })
