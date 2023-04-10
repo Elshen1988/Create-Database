@@ -14,7 +14,7 @@ connection.connect((err, data) => {
     console.log("err", err);
     console.log("data", data);
 })
-app.get("/", (req, res) => {
+app.get("/actors", (req, res) => {
 
     connection.query("select * from actors", (err, data) => {
         if (err) {
