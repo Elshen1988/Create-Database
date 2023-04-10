@@ -14,7 +14,7 @@ connection.connect((err, data) => {
     console.log("err", err);
     console.log("data", data);
 })
-app.get("/actors", (req, res) => {
+app.get("/", (req, res) => {
 
     connection.query("select * from actors", (err, data) => {
         if (err) {
@@ -23,7 +23,7 @@ app.get("/actors", (req, res) => {
         res.status(200).send(data)
     })
 })
-app.get("/actors/:id", (req, res) => {
+app.get("/:id", (req, res) => {
 
     connection.query(`select * from actors where unicueID=${req.params.id}`, (err, data) => {
         if (err) {
@@ -32,7 +32,7 @@ app.get("/actors/:id", (req, res) => {
         res.status(200).send(data)
     })
 })
-app.post("/actors/add", (req, res) => {
+app.post("/add", (req, res) => {
     
     const { name, surename, email, password } = req.body
     const query = `insert into actors
@@ -46,7 +46,7 @@ app.post("/actors/add", (req, res) => {
         res.status(200).send("ok")
     })
 })
-app.put("/actors/put/:id", (req, res) => {
+app.put("/put/:id", (req, res) => {
     console.log(req.params);
     const id=+req.params.id
     const { name, surename, email, password } = req.body
@@ -60,7 +60,7 @@ app.put("/actors/put/:id", (req, res) => {
         res.status(200).send("ok")
     })
 })
-app.delete("/actors/:id", (req, res) => {
+app.delete("/:id", (req, res) => {
     const id = +req.params.id
     const query = `delete from actors where unicueID=${id}`
     connection.query(query, (err) => {
